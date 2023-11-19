@@ -1,3 +1,8 @@
 package blackjack.domain
 
-class BlackjackGame
+class BlackjackGame(private var playerList: List<Player>) {
+
+    fun start(): List<Player> {
+        TODO("Not yet implemented")
+    }
+}
