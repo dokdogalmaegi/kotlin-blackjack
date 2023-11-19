@@ -2,7 +2,7 @@ package blackjack.domain
 
 import blackjack.domain.enum.Card
 
-class Player(private val name: String, private var cardList: List<Card> = listOf(), private var isPlay: Boolean = true) {
+class Player(val name: String, private var cardList: List<Card> = listOf(), private var isPlay: Boolean = true) {
 
     fun addCard(card: Card) {
         this.cardList += listOf(card)

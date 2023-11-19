@@ -19,6 +19,24 @@ class InputView(private val maxTryCount: Int = DEFAULT_MAX_TRY_COUNT) {
         return inputResult.getOrThrow()
     }
 
+    fun readLineBoolean(question: String?, count: Int = 0, trueText: String, falseText: String): Boolean {
+        val inputResult: Result<Boolean> = runCatching {
+            val input: String = readLine(question, count)
+
+            require(input == trueText || input == falseText) { "올바른 입력값이 아닙니다." }
+
+            return input == trueText
+        }.onFailure {
+            println(it.message)
+
+            if (it is IllegalArgumentException) {
+                return this.readLineBoolean(question, count + 1, trueText, falseText)
+            }
+        }
+
+        return inputResult.getOrThrow()
+    }
+
     fun readLineStringList(question: String?, count: Int = 0, separator: String = ","): List<String> {
         val inputResult: Result<List<String>> = runCatching {
             val input: String = readLine(question, count)
