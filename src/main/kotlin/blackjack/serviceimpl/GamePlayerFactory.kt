@@ -5,7 +5,5 @@ import blackjack.service.PlayerFactory
 
 class GamePlayerFactory : PlayerFactory {
 
-    override fun createPlayerList(nameList: List<String>): List<Player> {
-        TODO("Not yet implemented")
-    }
+    override fun createPlayerList(nameList: List<String>): List<Player> = nameList.map(::Player)
 }

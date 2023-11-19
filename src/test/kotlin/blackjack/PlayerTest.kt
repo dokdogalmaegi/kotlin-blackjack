@@ -1,6 +1,7 @@
 package blackjack
 
 import blackjack.domain.Player
+import blackjack.domain.enum.Card
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -20,5 +21,13 @@ class PlayerTest {
         val snapshotPlayer: Player = testPlayer.getSnapshot()
 
         assertThat(snapshotPlayer.toString()).isEqualTo(testPlayer.toString())
+    }
+
+    @Test
+    fun `게임 참여자의 카드를 추가할 수 있다`() {
+        val testPlayer: Player = Player("test")
+        testPlayer.addCard(Card.HEART_ACE)
+
+        assertThat(testPlayer.toString()).isEqualTo("test: A하트")
     }
 }
