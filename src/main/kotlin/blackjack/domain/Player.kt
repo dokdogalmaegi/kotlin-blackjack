@@ -13,4 +13,12 @@ class Player(private val name: String, private var cardList: List<Card> = listOf
     }
 
     override fun toString(): String = "$name: ${cardList.joinToString(", ")}"
+
+    override fun equals(other: Any?): Boolean {
+        if (other !is Player) {
+            return false
+        }
+
+        return this.name == other.name && this.cardList == other.cardList
+    }
 }
