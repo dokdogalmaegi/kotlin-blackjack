@@ -10,15 +10,7 @@ class BlackjackGame(private var playerList: List<Player>) {
         require(playerList.isNotEmpty()) { "플레이어가 존재하지 않습니다." }
     }
 
-    fun start(): List<Player> = process(playerList)
-
-    fun process(playerList: List<Player>): List<Player> {
-        val playerSnapshotList: List<Player> = playerList.map(Player::getSnapshot)
-
-        this.playerList.forEach {
-            it.addCard(cardDealer.dealCard())
-        }
-
-        return playerSnapshotList
+    fun start(): List<Player> {
+        TODO("Not yet implemented")
     }
 }

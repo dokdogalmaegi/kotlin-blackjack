@@ -2,7 +2,7 @@ package blackjack.domain
 
 import blackjack.domain.enum.Card
 
-class Player(private val name: String, private var cardList: List<Card> = listOf()) {
+class Player(private val name: String, private var cardList: List<Card> = listOf(), private var isPlay: Boolean = true) {
 
     fun addCard(card: Card) {
         this.cardList += listOf(card)
@@ -12,6 +12,8 @@ class Player(private val name: String, private var cardList: List<Card> = listOf
         return Player(this.name, this.cardList)
     }
 
+    fun isPlay(): Boolean = this.isPlay
+
     override fun toString(): String = "$name: ${cardList.joinToString(", ")}"
 
     override fun equals(other: Any?): Boolean {
@@ -19,6 +21,6 @@ class Player(private val name: String, private var cardList: List<Card> = listOf
             return false
         }
 
-        return this.name == other.name && this.cardList == other.cardList
+        return this.name == other.name && this.cardList == other.cardList && this.isPlay == other.isPlay
     }
 }
